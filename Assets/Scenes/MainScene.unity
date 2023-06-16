@@ -351,6 +351,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 1575657456317033980, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575657456317033980, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 1636790008043295328, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -374,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 1636790008043295328, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876922361163898093, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
+      propertyPath: m_text
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3938203896716845937, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_AnchorMax.y
@@ -409,6 +421,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077482997271666305, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897804555733653252, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
+      propertyPath: m_text
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5959355438347839640, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
@@ -458,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 6057411739123831152, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303605915860692716, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
+      propertyPath: m_text
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8066863611573663357, guid: 6dbefc0d348538e41a944036eec45b83, type: 3}
       propertyPath: m_Pivot.x
