@@ -17,4 +17,16 @@ public class GameManager : MonoBehaviour, ISingleton
     {
         _wordDictionaryManager = new WordDictionaryManager();
     }
+
+    private void Start()
+    {
+        LoadDictionary();
+    }
+
+    private void LoadDictionary()
+    {
+        TextAsset dictionary = Resources.Load<TextAsset>("Dictionary_UA");
+        _wordDictionaryManager.AssignDictionary(JsonUtility.FromJson<WordDictionary>(dictionary.text).dictionary);
+        _wordDictionaryManager.ShowAllWords();
+    }
 }
