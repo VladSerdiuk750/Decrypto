@@ -24,15 +24,16 @@ public class WordDictionaryManager : IWordDictionaryManager
         _uaDictionary = JsonUtility.FromJson<WordDictionary>(dictionary.text).dictionary;
     }
 
-    public Word GetRandomWord()
+    public Word GetRandomWord(Word previousWord = null)
     {
-        Word result = _uaDictionary[Random.Range(0, _uaDictionary.Count)];
+        Word result;
         do
         {
            result = _uaDictionary[Random.Range(0, _uaDictionary.Count)];
         } while (IsWordRepeated(result));
 
-        _currentWords.Add(result);
+        UpdateCurrentWordsInCollection(previousWord, result);
+
         return result;
     }
 
@@ -47,6 +48,26 @@ public class WordDictionaryManager : IWordDictionaryManager
         }
 
         return false;
+    }
+
+    
+    private void UpdateCurrentWordsInCollection(Word previousWord, Word nextWord)
+    {
+        if (previousWord != null)
+        {
+            for (int i = 0; i < _currentWords.Count; i++)
+            {
+                if (previousWord.id == _currentWords[i].id)
+                {
+                    _currentWords[i] = nextWord;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            _currentWords.Add(nextWord);
+        }
     }
 
     public void ClearCurrentWords()

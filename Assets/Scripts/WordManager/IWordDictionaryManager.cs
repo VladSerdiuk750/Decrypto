@@ -6,7 +6,7 @@ public interface IWordDictionaryManager
 
     void LoadDictionary();
 
-    Word GetRandomWord();
+    Word GetRandomWord(Word previousWord = null);
     
     void ClearCurrentWords();
 }

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour, ISingleton
 
     private IWordDictionaryManager _wordDictionaryManager;
 
-    public IWordDictionaryManager WordDictionaryManager => _wordDictionaryManager;
+    public IWordDictionaryManager WordDictionaryManager => _wordDictionaryManager; //getter property 
 
     public GameManager()
     {
