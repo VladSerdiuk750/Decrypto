@@ -17,12 +17,13 @@ public class HUDController : MonoBehaviour
         _gameManager = Singleton<GameManager>.instance;
     }
 
-    public void RandomizeWords()
+    public void RandomizeAllWords()
     {
-        for (int i = 0; i < _placements.Count; i++)
+        _gameManager.WordDictionaryManager.ClearCurrentWords();
+
+        foreach (var item in _placements)
         {
-            string word = _gameManager.WordDictionaryManager.GetRandomWord();
-            _placements[i].AssignWord(word);
+            item.AssignWord(_gameManager.WordDictionaryManager.GetRandomWord());
         }
     }
 }

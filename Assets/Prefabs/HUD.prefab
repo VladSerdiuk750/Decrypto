@@ -246,7 +246,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4931049470813095889}
         m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
-        m_MethodName: RandomizeWords
+        m_MethodName: RandomizeAllWords
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

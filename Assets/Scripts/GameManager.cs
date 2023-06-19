@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,5 +17,10 @@ public class GameManager : MonoBehaviour, ISingleton
     public GameManager()
     {
         _wordDictionaryManager = new WordDictionaryManager();
+    }
+
+    private void Start()
+    {
+        _wordDictionaryManager.LoadDictionary();
     }
 }
