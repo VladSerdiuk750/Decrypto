@@ -11,14 +11,20 @@ public class WordPlacement : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _sequenceNumber;
 
-    public void AssignWord(string word) 
+    private Word _currentWord;
+
+    public Word CurrentWord => _currentWord;
+
+    public void AssignWord(Word word) 
     {
-        _textField.text = word;
+        _currentWord = word;
+        _textField.text = word.word;
     }
 
-    public void AssignWord(string word, string sequenceNumber)
+    public void AssignWord(Word word, string sequenceNumber)
     {
-        _textField.text = word;
+        _currentWord = word;
+        _textField.text = word.word;
         _sequenceNumber.text = sequenceNumber;
     }
 }

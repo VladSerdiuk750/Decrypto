@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -20,13 +21,6 @@ public class GameManager : MonoBehaviour, ISingleton
 
     private void Start()
     {
-        LoadDictionary();
-    }
-
-    private void LoadDictionary()
-    {
-        TextAsset dictionary = Resources.Load<TextAsset>("Dictionary_UA");
-        _wordDictionaryManager.AssignDictionary(JsonUtility.FromJson<WordDictionary>(dictionary.text).dictionary);
-        _wordDictionaryManager.ShowAllWords();
+        _wordDictionaryManager.LoadDictionary();
     }
 }

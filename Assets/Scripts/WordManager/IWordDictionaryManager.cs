@@ -2,9 +2,11 @@ using System.Collections.Generic;
 
 public interface IWordDictionaryManager
 {
-    string GetRandomWord();
+    List<Word> UADictionary { get; }
 
-    void AssignDictionary(List<Word> words);
+    void LoadDictionary();
 
-    void ShowAllWords();
+    Word GetRandomWord();
+    
+    void ClearCurrentWords();
 }

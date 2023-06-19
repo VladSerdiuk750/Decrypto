@@ -7,30 +7,50 @@ public class WordDictionaryManager : IWordDictionaryManager
 {
     private List<Word> _uaDictionary;
 
+    private readonly string _uaDictionaryPath = "Dictionary_UA";
+
+    public List<Word> UADictionary => _uaDictionary;
+
+    private List<Word> _currentWords;
+
     public WordDictionaryManager()
     {
-
+        _currentWords = new List<Word>();
     }
 
-    public string GetRandomWord()
+    public void LoadDictionary()
     {
-        return null; //_uaDictionary[Random.Range(0, _uaDictionary.Count)];
+        TextAsset dictionary = Resources.Load<TextAsset>(_uaDictionaryPath);
+        _uaDictionary = JsonUtility.FromJson<WordDictionary>(dictionary.text).dictionary;
     }
 
-    public void AssignDictionary(List<Word> words)
+    public Word GetRandomWord()
     {
-        _uaDictionary = words;
-    }
-
-    public void ShowAllWords()
-    {
-        if(_uaDictionary != null &&  _uaDictionary.Count > 0)
+        Word result = _uaDictionary[Random.Range(0, _uaDictionary.Count)];
+        do
         {
-            foreach(Word word in _uaDictionary)
+           result = _uaDictionary[Random.Range(0, _uaDictionary.Count)];
+        } while (IsWordRepeated(result));
+
+        _currentWords.Add(result);
+        return result;
+    }
+
+    private bool IsWordRepeated(Word word)
+    {
+        foreach (var currentWord in _currentWords)
+        {
+            if(word.id == currentWord.id)
             {
-                Debug.Log("Id " + word.id.ToString());
-                Debug.Log("Word " + word.word.ToString());
+                 return true;
             }
         }
+
+        return false;
+    }
+
+    public void ClearCurrentWords()
+    {
+        _currentWords.Clear();
     }
 }
