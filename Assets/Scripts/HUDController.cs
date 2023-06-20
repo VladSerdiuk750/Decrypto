@@ -21,9 +21,13 @@ public class HUDController : MonoBehaviour
     {
         _gameManager.WordDictionaryManager.ClearCurrentWords();
 
+        Word currentword; 
+
         foreach (var item in _placements)
         {
-            item.AssignWord(_gameManager.WordDictionaryManager.GetRandomWord());
+            currentword = _gameManager.WordDictionaryManager.GetRandomWord();
+            item.AssignWord(currentword);
+            item.AssignId(currentword);
         }
     }
 }
