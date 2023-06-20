@@ -50,7 +50,6 @@ public class WordDictionaryManager : IWordDictionaryManager
         return false;
     }
 
-    
     private void UpdateCurrentWordsInCollection(Word previousWord, Word nextWord)
     {
         if (previousWord != null)

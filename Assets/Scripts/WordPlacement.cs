@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Unity.VisualScripting;
-using System.Net.Mail;
+
 
 public class WordPlacement : MonoBehaviour
 {
+    /// <summary>
+    /// Main word textfield object
+    /// </summary>
     [SerializeField]
     private TextMeshProUGUI _textField;
 
+    /// <summary>
+    /// Sequence number textfield object 
+    /// </summary>
     [SerializeField]
     private TextMeshProUGUI _sequenceNumber;
 
+    /// <summary>
+    /// Id textfield object
+    /// </summary>
     [SerializeField]
-    private TextMeshProUGUI _Id;
-
+    private TextMeshProUGUI _id;
 
     private Word _currentWord;
 
@@ -32,25 +40,11 @@ public class WordPlacement : MonoBehaviour
     {
         _currentWord = word;
         _textField.text = word.word;
-    }
-
-    public void AssignWord(Word word, string sequenceNumber)
-    {
-        _currentWord = word;
-        _textField.text = word.word;
-        _sequenceNumber.text = sequenceNumber;
-    }
-
-    public void AssignId(Word word)
-    {
-        _Id.text = word.id.ToString();
+        _id.text = word.id.ToString();
     }
 
     public void RandomTargetWord()
     {
         AssignWord(_gameManager.WordDictionaryManager.GetRandomWord(_currentWord));
-        AssignId(_currentWord);
     }
-
-     
 }

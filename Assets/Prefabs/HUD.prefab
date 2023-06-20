@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.118725546, g: 0.68100524, b: 0.8679245, a: 1}
+  m_Color: {r: 1, g: 0.81960785, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Random
+  m_text: "\u0417\u0433\u0435\u043D\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u0441\u043B\u043E\u0432\u0430 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -550,13 +550,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2771858050133692498, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 38.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4856602181277378773, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_fontSize
-      value: 34.1
+      value: 26.45
       objectReference: {fileID: 0}
     - target: {fileID: 8510803963254750217, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_Name
@@ -677,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4856602181277378773, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_fontSize
-      value: 35.8
+      value: 26.45
       objectReference: {fileID: 0}
     - target: {fileID: 8510803963254750217, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_Name
@@ -798,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4856602181277378773, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_fontSize
-      value: 35.8
+      value: 26.45
       objectReference: {fileID: 0}
     - target: {fileID: 8510803963254750217, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_Name
@@ -919,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4856602181277378773, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_fontSize
-      value: 35.8
+      value: 26.45
       objectReference: {fileID: 0}
     - target: {fileID: 8510803963254750217, guid: 348d533c30ff6a246856ebabd3790fb8, type: 3}
       propertyPath: m_Name
