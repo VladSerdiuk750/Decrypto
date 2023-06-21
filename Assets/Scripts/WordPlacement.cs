@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Unity.VisualScripting;
-
+using UnityEngine.UI;
 
 public class WordPlacement : MonoBehaviour
 {
@@ -25,6 +25,9 @@ public class WordPlacement : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _id;
 
+    [SerializeField]
+    private Button _placementButton;
+
     private Word _currentWord;
 
     public Word CurrentWord => _currentWord; 
@@ -34,6 +37,7 @@ public class WordPlacement : MonoBehaviour
     void Start()
     {
         _gameManager = Singleton<GameManager>.instance;
+        _gameManager.OnPlacementStatusConfirmed += ChangeButtonInteractability;
     }
 
     public void AssignWord(Word word) 
@@ -45,6 +49,15 @@ public class WordPlacement : MonoBehaviour
 
     public void RandomTargetWord()
     {
-        AssignWord(_gameManager.WordDictionaryManager.GetRandomWord(_currentWord));
+        if (_gameManager.ConfirmStatus == PlacementsConfirmStatus.UnConfirm)
+        {
+            AssignWord(_gameManager.WordDictionaryManager.GetRandomWord(_currentWord));
+        }
+    }
+
+    private void ChangeButtonInteractability()
+    {
+        _placementButton.interactable = false;
     }
 }
+

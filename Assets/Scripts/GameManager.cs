@@ -12,7 +12,26 @@ public class GameManager : MonoBehaviour, ISingleton
 
     private IWordDictionaryManager _wordDictionaryManager;
 
-    public IWordDictionaryManager WordDictionaryManager => _wordDictionaryManager; //getter property 
+    public IWordDictionaryManager WordDictionaryManager => _wordDictionaryManager; 
+
+    /// <summary>
+    /// Confirm status field 
+    /// </summary>
+    private PlacementsConfirmStatus _confirmStatus = PlacementsConfirmStatus.None;
+
+    /// <summary>
+    /// Getter property for confirm status 
+    /// </summary>
+    public PlacementsConfirmStatus ConfirmStatus
+    {
+        get => _confirmStatus;
+        set
+        {
+            if (value != _confirmStatus && value != PlacementsConfirmStatus.None) { _confirmStatus = value; }
+        }
+    }
+
+    public event Action OnPlacementStatusConfirmed;
 
     public GameManager()
     {
@@ -23,4 +42,16 @@ public class GameManager : MonoBehaviour, ISingleton
     {
         _wordDictionaryManager.LoadDictionary();
     }
+
+    public void OnStatusConfirmed()
+    {
+        OnPlacementStatusConfirmed?.Invoke();
+    }    
+}
+
+public enum PlacementsConfirmStatus
+{
+    None,
+    UnConfirm,
+    Confirm
 }

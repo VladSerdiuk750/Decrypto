@@ -46,7 +46,6 @@ public class WordDictionaryManager : IWordDictionaryManager
                  return true;
             }
         }
-
         return false;
     }
 
