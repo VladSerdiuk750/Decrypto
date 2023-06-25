@@ -25,10 +25,10 @@ public class HUDController : MonoBehaviour
 
     public void RandomizeAllWords()
     {
+        _gameManager.WordDictionaryManager.ClearCurrentWords();
+        Word currentword;
         foreach (var item in _placements)
         {
-            _gameManager.WordDictionaryManager.ClearCurrentWords();
-            Word currentword;
             currentword = _gameManager.WordDictionaryManager.GetRandomWord();
             item.AssignWord(currentword);
         }
