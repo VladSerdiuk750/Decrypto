@@ -36,6 +36,7 @@ public class HUDController : MonoBehaviour
         _randomizeButton.SetActive(false);
         _confirmButton.SetActive(true);
         _gameManager.ConfirmStatus = PlacementsConfirmStatus.UnConfirm; 
+        _gameManager.OnStatusUnConfirmed();
     }
 
     public void ConfirmWords()

@@ -37,7 +37,7 @@ public class WordPlacement : MonoBehaviour
     void Start()
     {
         _gameManager = Singleton<GameManager>.instance;
-        _gameManager.OnPlacementStatusConfirmed += ChangeButtonInteractability;
+        _gameManager.OnConfirmStatusChanged += ChangeButtonInteractability;
     }
 
     public void AssignWord(Word word) 
@@ -55,9 +55,10 @@ public class WordPlacement : MonoBehaviour
         }
     }
 
-    private void ChangeButtonInteractability()
+    private void ChangeButtonInteractability(bool isInteractable)
     {
-        _placementButton.interactable = false;
+        _placementButton.interactable = isInteractable;
+        _id.gameObject.SetActive(isInteractable);
     }
 }
 

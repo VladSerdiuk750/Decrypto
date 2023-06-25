@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour, ISingleton
         }
     }
 
-    public event Action OnPlacementStatusConfirmed;
+    public event Action<bool> OnConfirmStatusChanged;
 
     public GameManager()
     {
@@ -45,8 +45,13 @@ public class GameManager : MonoBehaviour, ISingleton
 
     public void OnStatusConfirmed()
     {
-        OnPlacementStatusConfirmed?.Invoke();
-    }    
+        OnConfirmStatusChanged?.Invoke(false);
+    }
+
+    public void OnStatusUnConfirmed()
+    {
+        OnConfirmStatusChanged?.Invoke(true);
+    }
 }
 
 public enum PlacementsConfirmStatus
