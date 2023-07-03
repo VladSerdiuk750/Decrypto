@@ -13,9 +13,12 @@ public class CodeManager
 
     public Code Code => _code;
 
+    private List<int> _availableNumbers;
+
     public CodeManager()
     {
         _code = new Code();
+        _availableNumbers = new List<int>();
     }
 
     /// <summary>
@@ -30,12 +33,12 @@ public class CodeManager
         for (int i = 0; i < amountOfNumbers; i++) 
         {
             //get a random number from the available list of numbers
-            int randomNumberOfCode = Code.EnableNumbers[UnityEngine.Random.Range(0, Code.EnableNumbers.Count)];
+            int randomNumberOfCode = _availableNumbers[UnityEngine.Random.Range(0, _availableNumbers.Count)];
 
             //add this number to our list of code 
             Code.CodeList.Add(randomNumberOfCode);
             //remove it from availiables to avoid getting the same number
-            Code.EnableNumbers.Remove(randomNumberOfCode);
+            _availableNumbers.Remove(randomNumberOfCode);
         }
     }
 
@@ -46,13 +49,11 @@ public class CodeManager
     {
         for(int i = 1; i <= amountOfNumbers + 1; i++ )
         {
-            Code.EnableNumbers.Add(i);
-
-            Debug.Log("Enables numbers: " + Code.EnableNumbers[i - 1]);
+            _availableNumbers.Add(i);
         }
     }
 
-    public string getCode()
+    public string GetCode()
     {
         return string.Join(", ", Code.CodeList);
     }
