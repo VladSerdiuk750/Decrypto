@@ -9,19 +9,16 @@ public class GameManager : MonoBehaviour, ISingleton
 {
     [SerializeField]
     private HUDController _controller;
-
+    
+    /// <summary>
+    /// WordManager field
+    /// </summary>
     private IWordDictionaryManager _wordDictionaryManager;
 
     public IWordDictionaryManager WordDictionaryManager => _wordDictionaryManager; 
 
-    /// <summary>
-    /// Confirm status field 
-    /// </summary>
     private PlacementsConfirmStatus _confirmStatus = PlacementsConfirmStatus.None;
 
-    /// <summary>
-    /// Getter property for confirm status 
-    /// </summary>
     public PlacementsConfirmStatus ConfirmStatus
     {
         get => _confirmStatus;
@@ -31,11 +28,22 @@ public class GameManager : MonoBehaviour, ISingleton
         }
     }
 
+    /// <summary>
+    /// CodeManager field
+    /// </summary>
+    private CodeManager _codeManager;
+
+    public CodeManager CodeManager => _codeManager;
+
+    /// <summary>
+    /// Event field 
+    /// </summary>
     public event Action<bool> OnConfirmStatusChanged;
 
     public GameManager()
     {
         _wordDictionaryManager = new WordDictionaryManager();
+        _codeManager = new CodeManager();
     }
 
     private void Start()

@@ -15,6 +15,9 @@ public class HUDController : MonoBehaviour
     [SerializeField]
     private GameObject _confirmButton;
 
+    [SerializeField]
+    private TextMeshProUGUI _codeField;
+
     private GameManager _gameManager;
 
     // Start is called before the first frame update
@@ -44,5 +47,12 @@ public class HUDController : MonoBehaviour
         _gameManager.ConfirmStatus = PlacementsConfirmStatus.Confirm;
         _gameManager.OnStatusConfirmed();
         _confirmButton.SetActive(false);
+        SetUpCode();
+    }
+
+    public void SetUpCode()
+    {
+        _gameManager.CodeManager.GenerateCode(_placements.Count - 1);
+        _codeField.text = _gameManager.CodeManager.GetCode();
     }
 }
