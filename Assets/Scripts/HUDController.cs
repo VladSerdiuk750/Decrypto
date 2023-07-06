@@ -18,6 +18,12 @@ public class HUDController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _codeField;
 
+    [SerializeField]
+    private GameObject _displayCodeButton;
+
+    [SerializeField]
+    private TextMeshProUGUI _discriptionOfDisplayCodeButton;
+
     private GameManager _gameManager;
 
     // Start is called before the first frame update
@@ -48,11 +54,26 @@ public class HUDController : MonoBehaviour
         _gameManager.OnStatusConfirmed();
         _confirmButton.SetActive(false);
         SetUpCode();
+        _displayCodeButton.SetActive(true);
     }
 
     public void SetUpCode()
     {
         _gameManager.CodeManager.GenerateCode(_placements.Count - 1);
         _codeField.text = _gameManager.CodeManager.GetCode();
+    }
+
+    public void DisplayCode()
+    {
+        if(_codeField.gameObject.activeSelf)
+        {
+            _codeField.gameObject.SetActive(false);
+            _discriptionOfDisplayCodeButton.text = "Показати код";
+        }
+        else
+        {
+            _codeField.gameObject.SetActive(true);
+            _discriptionOfDisplayCodeButton.text = "Приховати код";
+        }
     }
 }
