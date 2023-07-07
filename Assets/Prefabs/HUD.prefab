@@ -165,7 +165,7 @@ MonoBehaviour:
   _confirmButton: {fileID: 3809812001512267077}
   _codeField: {fileID: 1368527369289178500}
   _displayCodeButton: {fileID: 7891386702815509594}
-  _discriptionOfDisplayCodeButton: {fileID: 8873782466411651302}
+  _descriptionCodeButton: {fileID: 8873782466411651302}
 --- !u!1 &863542563442329655
 GameObject:
   m_ObjectHideFlags: 0

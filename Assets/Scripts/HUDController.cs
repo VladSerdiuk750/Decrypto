@@ -22,11 +22,14 @@ public class HUDController : MonoBehaviour
     private GameObject _displayCodeButton;
 
     [SerializeField]
-    private TextMeshProUGUI _discriptionOfDisplayCodeButton;
+    private TextMeshProUGUI _descriptionCodeButton;
 
     private GameManager _gameManager;
 
-    // Start is called before the first frame update
+    private string _showCodeText = "Показати код";
+
+    private string _hideCodeText = "Приховати код";
+   
     void Start()
     {
         _gameManager = Singleton<GameManager>.instance;
@@ -35,11 +38,10 @@ public class HUDController : MonoBehaviour
     public void RandomizeAllWords()
     {
         _gameManager.WordDictionaryManager.ClearCurrentWords();
-        Word currentword;
         foreach (var item in _placements)
         {
-            currentword = _gameManager.WordDictionaryManager.GetRandomWord();
-            item.AssignWord(currentword);
+            Word currentWord = _gameManager.WordDictionaryManager.GetRandomWord();
+            item.AssignWord(currentWord);
         }
 
         _randomizeButton.SetActive(false);
@@ -57,7 +59,7 @@ public class HUDController : MonoBehaviour
         _displayCodeButton.SetActive(true);
     }
 
-    public void SetUpCode()
+    private void SetUpCode()
     {
         _gameManager.CodeManager.GenerateCode(_placements.Count - 1);
         _codeField.text = _gameManager.CodeManager.GetCode();
@@ -65,15 +67,9 @@ public class HUDController : MonoBehaviour
 
     public void DisplayCode()
     {
-        if(_codeField.gameObject.activeSelf)
-        {
-            _codeField.gameObject.SetActive(false);
-            _discriptionOfDisplayCodeButton.text = "Показати код";
-        }
-        else
-        {
-            _codeField.gameObject.SetActive(true);
-            _discriptionOfDisplayCodeButton.text = "Приховати код";
-        }
+        bool isCodeHidden = !_codeField.gameObject.activeSelf;
+
+        _codeField.gameObject.SetActive(isCodeHidden);
+        _descriptionCodeButton.text = isCodeHidden? _hideCodeText: _showCodeText;
     }
 }
