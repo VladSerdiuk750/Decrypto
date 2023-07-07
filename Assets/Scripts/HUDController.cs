@@ -18,9 +18,18 @@ public class HUDController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _codeField;
 
+    [SerializeField]
+    private GameObject _displayCodeButton;
+
+    [SerializeField]
+    private TextMeshProUGUI _descriptionCodeButton;
+
     private GameManager _gameManager;
 
-    // Start is called before the first frame update
+    private string _showCodeText = "Показати код";
+
+    private string _hideCodeText = "Приховати код";
+   
     void Start()
     {
         _gameManager = Singleton<GameManager>.instance;
@@ -29,11 +38,10 @@ public class HUDController : MonoBehaviour
     public void RandomizeAllWords()
     {
         _gameManager.WordDictionaryManager.ClearCurrentWords();
-        Word currentword;
         foreach (var item in _placements)
         {
-            currentword = _gameManager.WordDictionaryManager.GetRandomWord();
-            item.AssignWord(currentword);
+            Word currentWord = _gameManager.WordDictionaryManager.GetRandomWord();
+            item.AssignWord(currentWord);
         }
 
         _randomizeButton.SetActive(false);
@@ -48,11 +56,20 @@ public class HUDController : MonoBehaviour
         _gameManager.OnStatusConfirmed();
         _confirmButton.SetActive(false);
         SetUpCode();
+        _displayCodeButton.SetActive(true);
     }
 
-    public void SetUpCode()
+    private void SetUpCode()
     {
         _gameManager.CodeManager.GenerateCode(_placements.Count - 1);
         _codeField.text = _gameManager.CodeManager.GetCode();
+    }
+
+    public void DisplayCode()
+    {
+        bool isCodeHidden = !_codeField.gameObject.activeSelf;
+
+        _codeField.gameObject.SetActive(isCodeHidden);
+        _descriptionCodeButton.text = isCodeHidden? _hideCodeText: _showCodeText;
     }
 }
