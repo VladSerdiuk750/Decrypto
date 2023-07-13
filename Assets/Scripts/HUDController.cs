@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,12 +9,21 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField]
     private List<WordPlacement> _placements;
-    
+
+    [SerializeField]
+    private List<InputCodeField> _inputCodeField;
+
+    [SerializeField]
+    private GameObject _codePlacements;
+
     [SerializeField]
     private GameObject _randomizeButton;
 
     [SerializeField]
     private GameObject _confirmButton;
+
+    [SerializeField]
+    private GameObject _checkCodeButton;
 
     [SerializeField]
     private TextMeshProUGUI _codeField;
@@ -57,6 +67,8 @@ public class HUDController : MonoBehaviour
         _confirmButton.SetActive(false);
         SetUpCode();
         _displayCodeButton.SetActive(true);
+        _codePlacements.SetActive(true);
+        _checkCodeButton.SetActive(true);
     }
 
     private void SetUpCode()
@@ -71,5 +83,20 @@ public class HUDController : MonoBehaviour
 
         _codeField.gameObject.SetActive(isCodeHidden);
         _descriptionCodeButton.text = isCodeHidden? _hideCodeText: _showCodeText;
+    }
+
+    public void CheckCode()
+    {
+        for (int i = 0; i < _inputCodeField.Count; i++)
+        {
+            if (_gameManager.CodeManager.Code.CodeList[i] != _inputCodeField[i].GetEnteredCode())
+            {
+                Debug.Log("inCorrect");
+            }
+           else
+            {
+                Debug.Log("Correct");
+            }
+        }
     }
 }
