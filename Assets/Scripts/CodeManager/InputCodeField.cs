@@ -8,19 +8,14 @@ public class InputCodeField : MonoBehaviour
 
     public int GetEnteredCode()
     {
-        int number;
-        if(!string.IsNullOrEmpty(_inputCode.text))
-        {
-            if (int.TryParse(_inputCode.text, out number))
-            {
-                return number;
-            }
-            else
-            {
-                return 0;
-            }
+        int number = 0;
+       
+        if (!string.IsNullOrEmpty(_inputCode.text))
+        { 
+            int.TryParse(_inputCode.text, out number);
         }
-        else return 0;
+
+        return number;
     }
 }
 

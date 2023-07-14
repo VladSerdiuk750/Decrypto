@@ -352,7 +352,10 @@ MonoBehaviour:
   - {fileID: 3034489653196816453}
   - {fileID: 5622746219856726956}
   - {fileID: 3224420736486029741}
-  _inputeCodeField: []
+  _inputCodeField:
+  - {fileID: 7397292230896750319}
+  - {fileID: 8604999275330561807}
+  - {fileID: 7735503442697322042}
   _codePlacements: {fileID: 4211230303947097448}
   _randomizeButton: {fileID: 863542563442329655}
   _confirmButton: {fileID: 3809812001512267077}

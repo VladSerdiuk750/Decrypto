@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -91,11 +90,11 @@ public class HUDController : MonoBehaviour
         {
             if (_gameManager.CodeManager.Code.CodeList[i] != _inputCodeField[i].GetEnteredCode())
             {
-                Debug.Log("inCorrect");
+                Debug.Log("HUDController | CheckCode | Code is not correct");
             }
            else
             {
-                Debug.Log("Correct");
+                Debug.Log("HUDController | CheckCode | Code is correct");
             }
         }
     }
