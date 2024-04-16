@@ -33,11 +33,14 @@ public class HUDController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _descriptionCodeButton;
 
+    [SerializeField] 
+    private GameObject _cluesPlacement;
+
     private GameManager _gameManager;
 
-    private string _showCodeText = "Показати код";
+    private string _showCodeText = "РџРѕРєР°Р·Р°С‚Рё РєРѕРґ";
 
-    private string _hideCodeText = "Приховати код";
+    private string _hideCodeText = "РџСЂРёС…РѕРІР°С‚Рё РєРѕРґ";
    
     void Start()
     {
@@ -66,8 +69,6 @@ public class HUDController : MonoBehaviour
         _confirmButton.SetActive(false);
         SetUpCode();
         _displayCodeButton.SetActive(true);
-        _codePlacements.SetActive(true);
-        _checkCodeButton.SetActive(true);
     }
 
     private void SetUpCode()
@@ -79,9 +80,23 @@ public class HUDController : MonoBehaviour
     public void DisplayCode()
     {
         bool isCodeHidden = !_codeField.gameObject.activeSelf;
-
         _codeField.gameObject.SetActive(isCodeHidden);
-        _descriptionCodeButton.text = isCodeHidden? _hideCodeText: _showCodeText;
+
+        if(isCodeHidden) 
+        {
+            _descriptionCodeButton.text = isCodeHidden? _hideCodeText : _showCodeText;
+        }
+        else
+        {            
+            ShowCluesPlacement();
+        }
+
+    }
+
+    private void ShowCluesPlacement()
+    {
+        _displayCodeButton.SetActive(false);
+        _cluesPlacement.SetActive(true);
     }
 
     public void CheckCode()
