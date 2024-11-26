@@ -22,25 +22,18 @@ public class HUDController : MonoBehaviour
     private GameObject _confirmButton;
 
     [SerializeField]
-    private GameObject _checkCodeButton;
+    private GameObject _confirmCluesButton;
 
     [SerializeField]
     private TextMeshProUGUI _codeField;
 
-    [SerializeField]
-    private GameObject _displayCodeButton;
-
-    [SerializeField]
-    private TextMeshProUGUI _descriptionCodeButton;
-
     [SerializeField] 
     private GameObject _cluesPlacement;
 
+    [SerializeField]
+    private List<CluePlacement> _clueList;
+
     private GameManager _gameManager;
-
-    private string _showCodeText = "Показати код";
-
-    private string _hideCodeText = "Приховати код";
    
     void Start()
     {
@@ -68,35 +61,14 @@ public class HUDController : MonoBehaviour
         _gameManager.OnStatusConfirmed();
         _confirmButton.SetActive(false);
         SetUpCode();
-        _displayCodeButton.SetActive(true);
+        _codeField.gameObject.SetActive(true);
+        _cluesPlacement.SetActive(true);    
     }
 
     private void SetUpCode()
     {
         _gameManager.CodeManager.GenerateCode(_placements.Count - 1);
-        _codeField.text = _gameManager.CodeManager.GetCode();
-    }
-
-    public void DisplayCode()
-    {
-        bool isCodeHidden = !_codeField.gameObject.activeSelf;
-        _codeField.gameObject.SetActive(isCodeHidden);
-
-        if(isCodeHidden) 
-        {
-            _descriptionCodeButton.text = isCodeHidden? _hideCodeText : _showCodeText;
-        }
-        else
-        {            
-            ShowCluesPlacement();
-        }
-
-    }
-
-    private void ShowCluesPlacement()
-    {
-        _displayCodeButton.SetActive(false);
-        _cluesPlacement.SetActive(true);
+        _codeField.text = "Код: " + _gameManager.CodeManager.GetCode();
     }
 
     public void CheckCode()
@@ -111,6 +83,16 @@ public class HUDController : MonoBehaviour
             {
                 Debug.Log("HUDController | CheckCode | Code is correct");
             }
+        }
+    }
+
+    public void ConfirmClues()
+    {
+        _codeField.gameObject.SetActive(false);
+        _confirmCluesButton.SetActive(false);
+        foreach(CluePlacement clue in _clueList)
+        {
+            clue.DisableEditing();
         }
     }
 }
