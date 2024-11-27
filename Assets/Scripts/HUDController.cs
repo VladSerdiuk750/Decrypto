@@ -10,12 +10,6 @@ public class HUDController : MonoBehaviour
     private List<WordPlacement> _placements;
 
     [SerializeField]
-    private List<InputCodeField> _inputCodeField;
-
-    [SerializeField]
-    private GameObject _codePlacements;
-
-    [SerializeField]
     private GameObject _randomizeButton;
 
     [SerializeField]
@@ -32,6 +26,12 @@ public class HUDController : MonoBehaviour
 
     [SerializeField]
     private List<CluePlacement> _clueList;
+
+    [SerializeField]
+    private GameObject _codeSelection;
+    
+    [SerializeField]
+    private List<InputCodeField> _codeInputList;
 
     private GameManager _gameManager;
    
@@ -71,11 +71,11 @@ public class HUDController : MonoBehaviour
         _codeField.text = "Код: " + _gameManager.CodeManager.GetCode();
     }
 
-    public void CheckCode()
+    private void CheckCode()
     {
-        for (int i = 0; i < _inputCodeField.Count; i++)
+        for (int i = 0; i < _codeInputList.Count; i++)
         {
-            if (_gameManager.CodeManager.Code.CodeList[i] != _inputCodeField[i].GetEnteredCode())
+            if (_gameManager.CodeManager.Code.CodeList[i] != _codeInputList[i].GetEnteredCode())
             {
                 Debug.Log("HUDController | CheckCode | Code is not correct");
             }
@@ -94,5 +94,16 @@ public class HUDController : MonoBehaviour
         {
             clue.DisableEditing();
         }
+        _codeSelection.SetActive(true);
+    }
+
+    public void ConfirmAnswer()
+    {
+        foreach(InputCodeField code in _codeInputList)
+        {
+            code.DisableEditing();
+        }
+
+        CheckCode();
     }
 }

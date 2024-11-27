@@ -17,5 +17,10 @@ public class InputCodeField : MonoBehaviour
 
         return number;
     }
+
+    public void DisableEditing()
+    {
+        _inputCode.interactable = false;
+    }
 }
 
